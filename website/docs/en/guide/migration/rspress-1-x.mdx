@@ -370,6 +370,7 @@ import { defineConfig } from 'rspress/config';
 export default defineConfig({
   markdown: {
     mdxRs: false,
+    remarkPlugins: [remarkPlugin],
   },
 });
 ```
@@ -382,6 +383,7 @@ import { defineConfig } from '@rspress/core';
 export default defineConfig({
   markdown: {
     // mdxRs option removed, no replacement needed
+    remarkPlugins: [remarkPlugin],
   },
 });
 ```
