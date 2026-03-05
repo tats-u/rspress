@@ -340,7 +340,7 @@ test.describe('i18n test', async () => {
     await expect(enHreflang).toHaveCount(0);
   });
 
-  test('Should not have hreflang link tags when there is only one language', async ({
+  test('Should have exactly N-1 hreflang links for N locales', async ({
     page,
   }) => {
     // This test verifies that single-language sites don't get hreflang tags

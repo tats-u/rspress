@@ -2,6 +2,7 @@ import type { FrontMatterMeta } from '@rspress/core';
 import {
   Content,
   useFrontmatter,
+  useLang,
   useLocaleSiteData,
   usePage,
   useSite,
@@ -101,13 +102,14 @@ const HeadTags = memo(
 );
 
 function HreflangLinks() {
-  const { items, activeValue } = useLangsMenu();
+  const { items } = useLangsMenu();
+  const currentLang = useLang();
 
   useHead({
     link:
       items.length > 1
         ? items
-            .filter(item => item.text !== activeValue)
+            .filter(item => item.lang !== currentLang)
             .map(item => ({
               rel: 'alternate',
               hreflang: item.lang,
