@@ -5,6 +5,7 @@ import {
   useLocaleSiteData,
   usePage,
   useSite,
+  withBase,
 } from '@rspress/core/runtime';
 import type { HomeLayoutProps } from '@theme';
 import {
@@ -20,6 +21,7 @@ import {
 } from '@theme';
 import { Head, useHead } from '@unhead/react';
 import React, { memo, useMemo } from 'react';
+import { useLangsMenu } from '../../components/Nav/hooks';
 
 export type LayoutProps = {
   top?: React.ReactNode;
@@ -97,6 +99,25 @@ const HeadTags = memo(
     return <Head>{frontmatterTags ?? null}</Head>;
   },
 );
+
+function HreflangLinks() {
+  const { items, activeValue } = useLangsMenu();
+
+  useHead({
+    link:
+      items.length > 1
+        ? items
+            .filter(item => item.text !== activeValue)
+            .map(item => ({
+              rel: 'alternate',
+              hreflang: item.lang,
+              href: withBase(item.link),
+            }))
+        : [],
+  });
+
+  return null;
+}
 
 export function Layout(props: LayoutProps) {
   const {
@@ -218,6 +239,7 @@ export function Layout(props: LayoutProps) {
         description={description}
         frontmatter={frontmatter}
       />
+      <HreflangLinks />
 
       {top}
       {pageType !== 'blank' && showNavbar && (
