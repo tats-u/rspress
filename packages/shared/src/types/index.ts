@@ -555,6 +555,13 @@ export interface MarkdownOptions {
    * @default true
    */
   extractDescription?: boolean;
+  /**
+   * Whether to enable CJK-friendly emphasis and strikethrough handling.
+   * This fixes a CommonMark specification issue where emphasis marks (`**`, `*`, `~~`)
+   * are not recognized correctly in Chinese, Japanese, and Korean text.
+   * @default true
+   */
+  cjkFriendlyEmphasis?: boolean;
 }
 
 export type Config =
