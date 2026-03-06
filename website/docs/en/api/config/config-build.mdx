@@ -325,9 +325,9 @@ Whether to extract the description from the content. If enabled, Rspress will au
 - **Type**: `boolean`
 - **Default**: `true`
 
-Whether to enable CJK-friendly emphasis and strikethrough parsing. When enabled, `**`, `*`, and `~~` will correctly parse as emphasis/strikethrough even when adjacent to CJK punctuation characters (e.g. fullwidth parentheses, periods, commas).
+Whether to enable CJK-friendly emphasis and strikethrough parsing. When enabled, `**`, `*`, and `~~` will correctly parse as emphasis/strikethrough when CJK characters are adjacent to the markers, including cases where punctuation (CJK or ASCII) appears inside the markers.
 
-This addresses a [CommonMark spec limitation](https://github.com/commonmark/commonmark-spec/issues/650) where emphasis markers fail next to CJK punctuation. For example, `**中文文本（带括号）。**` would not render as bold without this option.
+This addresses a [CommonMark spec limitation](https://github.com/commonmark/commonmark-spec/issues/650) where emphasis markers are not recognized correctly when CJK characters are adjacent. For example, `**中文文本（带括号）。**` would not render as bold without this option. For more details on this extension, see [markdown-cjk-friendly](https://github.com/tats-u/markdown-cjk-friendly).
 
 Enabled by default. To disable:
 

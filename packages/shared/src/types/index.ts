@@ -558,8 +558,9 @@ export interface MarkdownOptions {
   /**
    * Whether to enable CJK-friendly emphasis and strikethrough handling.
    * This fixes a CommonMark specification issue where emphasis marks (`**`, `*`, `~~`)
-   * are not recognized correctly in Chinese, Japanese, and Korean text.
+   * are not recognized correctly when CJK characters are adjacent.
    * @default true
+   * @see {@link https://github.com/tats-u/markdown-cjk-friendly}
    */
   cjkFriendlyEmphasis?: boolean;
 }
